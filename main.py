@@ -1,5 +1,8 @@
 import cv2 as cv
 import numpy as np
+from selenium import webdriver
+#import os
+import subprocess
 capture=cv.VideoCapture(1)
 
 k=0
@@ -26,6 +29,8 @@ while(True):
 
     white_pixel_count = np.sum(thresh == 255)
     if(white_pixel_count >2000):
+        #os.system("pkill firefox") 
+        subprocess.run(["pkill", "firefox"]) #subprocess is faster than os
         break
     #not needed now
     # contours, _ = cv.findContours(thresh.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
